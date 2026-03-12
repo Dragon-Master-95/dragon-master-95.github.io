@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harsha Avinash Tanti, PhD — Radio Astronomer & Instrumentation Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #080b10;
+      --bg2:      #0d1119;
+      --bg3:      #121824;
+      --surface:  #161d2a;
+      --line:     rgba(255,255,255,0.07);
+      --line2:    rgba(255,255,255,0.12);
+      --text:     #c8d4e8;
+      --muted:    #5a6a82;
+      --bright:   #eaf0fc;
+      --gold:     #e8b86d;
+      --gold2:    #f5d08a;
+      --blue:     #4a9eff;
+      --teal:     #3dd9c0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-mono:  'JetBrains Mono', monospace;
+      --font-body:  'Libre Baskerville', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Cursor ─────────────────────────────── */
+    .cursor { position:fixed; width:8px; height:8px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s,background .2s; mix-blend-mode:screen; }
+    .cursor-trail { position:fixed; width:32px; height:32px; border:1px solid rgba(232,184,109,.35); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left .12s ease,top .12s ease; }
+    .cursor.big { width:16px; height:16px; }
+
+    /* ── Stars background ───────────────────── */
+    #stars-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.6; }
+
+    /* ── NAV ────────────────────────────────── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:50;
+      display: flex; justify-content:space-between; align-items:center;
+      padding: 1.25rem 5rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,11,16,.85);
+      backdrop-filter: blur(24px);
+    }
+    .nav-logo { font-family:var(--font-serif); font-weight:700; font-size:1rem; color:var(--bright); letter-spacing:.01em; }
+    .nav-logo span { color:var(--gold); font-style:italic; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-family:var(--font-mono); font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-links a:hover { color:var(--gold); }
+
+    /* ── HERO ───────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 9rem 5rem 5rem;
+      position: relative; z-index:1;
+      overflow: hidden;
+    }
+    .hero-content { max-width: 780px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items:center; gap:.6rem;
+      font-family: var(--font-mono); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase;
+      color: var(--gold); margin-bottom:2rem;
+      border: 1px solid rgba(232,184,109,.2); padding:.4rem 1rem;
+    }
+    .hero-eyebrow::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; animation:blink 2.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
+    h1.hero-name {
+      font-family: var(--font-serif); font-weight:900;
+      font-size: clamp(3.2rem,6.5vw,6.5rem);
+      line-height: .95; letter-spacing:-.03em;
+      color: var(--bright); margin-bottom:.5rem;
+    }
+    h1.hero-name em { color:var(--gold); font-style:italic; display:block; }
+    .hero-title {
+      font-family: var(--font-mono); font-size:.8rem; letter-spacing:.15em; text-transform:uppercase;
+      color: var(--teal); margin:1.5rem 0 2rem;
+      border-left: 2px solid var(--teal); padding-left:1rem;
+    }
+    .hero-desc {
+      font-size: 1.05rem; color:rgba(200,212,232,.75); line-height:1.85;
+      max-width: 620px; margin-bottom:3rem;
+    }
+    .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:.8rem 2rem; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; cursor:none; transition:all .25s; }
+    .btn-gold { background:var(--gold); color:#080b10; }
+    .btn-gold:hover { background:var(--gold2); transform:translateY(-2px); box-shadow:0 8px 28px rgba(232,184,109,.3); }
+    .btn-ghost { border:1px solid var(--line2); color:var(--muted); }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+    .hero-orb {
+      position: absolute; right:-15%; top:10%;
+      width: 700px; height:700px;
+      background: radial-gradient(circle, rgba(74,158,255,.06) 0%, rgba(61,217,192,.04) 40%, transparent 70%);
+      border-radius:50%; pointer-events:none;
+      animation: orbit 20s linear infinite;
+    }
+    @keyframes orbit { 0%{transform:rotate(0) translateX(30px) rotate(0)} 100%{transform:rotate(360deg) translateX(30px) rotate(-360deg)} }
+    .hero-stats {
+      display: flex; gap:3.5rem; margin-top:4rem;
+      padding-top:2rem; border-top:1px solid var(--line);
+    }
+    .stat-n { font-family:var(--font-serif); font-weight:900; font-size:2.2rem; color:var(--bright); line-height:1; }
+    .stat-n span { color:var(--gold); }
+    .stat-l { font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
+
+    /* ── SECTION BASE ───────────────────────── */
+    section { padding:7rem 5rem; position:relative; z-index:1; }
+    .sec-label { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+    .sec-title { font-family:var(--font-serif); font-weight:900; font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.02em; color:var(--bright); line-height:1.05; }
+    .sec-rule { width:36px; height:2px; background:var(--gold); margin:1.75rem 0 3rem; }
+
+    /* ── ABOUT ──────────────────────────────── */
+    #about { border-top:1px solid var(--line); background:var(--bg2); }
+    .about-grid { display:grid; grid-template-columns:3fr 2fr; gap:5rem; align-items:start; }
+    .about-body p { font-size:1rem; color:rgba(200,212,232,.8); line-height:1.9; margin-bottom:1.4rem; }
+    .about-body p:last-child { margin-bottom:0; }
+    .about-interests { margin-top:2rem; }
+    .about-interests h4 { font-family:var(--font-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:1.2rem; }
+    .interest-item { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:.9rem; font-size:.88rem; color:var(--text); line-height:1.55; }
+    .interest-item::before { content:'▸'; color:var(--gold); font-size:.7rem; margin-top:.15rem; flex-shrink:0; }
+    .about-side { display:flex; flex-direction:column; gap:1px; background:var(--line); }
+    .about-card { background:var(--bg2); padding:1.75rem; border-top:2px solid transparent; transition:border-color .3s; }
+    .about-card:hover { border-top-color:var(--gold); }
+    .about-card-icon { font-size:1.4rem; margin-bottom:.85rem; }
+    .about-card h4 { font-family:var(--font-serif); font-weight:700; font-size:.95rem; color:var(--bright); margin-bottom:.4rem; }
+    .about-card p { font-size:.78rem; color:var(--muted); line-height:1.6; }
+
+    /* ── SKILLS ─────────────────────────────── */
+    #skills { border-top:1px solid var(--line); }
+    .skills-outer { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:3rem; }
+    .skill-block { background:var(--bg); padding:2.5rem; }
+    .skill-block:hover { background:var(--bg3); }
+    .skill-cat { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:1.4rem; }
+    .skill-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
+    .skill-tag { font-family:var(--font-mono); font-size:.68rem; padding:.3rem .7rem; border:1px solid var(--line2); color:var(--text); letter-spacing:.04em; transition:all .25s; cursor:default; }
+    .skill-tag:hover { border-color:var(--gold); color:var(--gold); background:rgba(232,184,109,.05); }
+    .skill-note { font-size:.72rem; color:var(--muted); margin-top:.6rem; font-style:italic; }
+
+    /* ── RESEARCH ───────────────────────────── */
+    #research { border-top:1px solid var(--line); background:var(--bg2); }
+    .research-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .research-card { background:var(--bg2); padding:2.5rem; position:relative; overflow:hidden; }
+    .research-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,var(--gold),transparent); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
+    .research-card:hover::after { transform:scaleX(1); }
+    .research-icon { font-size:1.8rem; margin-bottom:1.2rem; }
+    .research-card h3 { font-family:var(--font-serif); font-weight:700; font-size:1.05rem; color:var(--bright); margin-bottom:.75rem; line-height:1.35; }
+    .research-card p { font-size:.82rem; color:var(--muted); line-height:1.7; }
+
+    /* ── PUBLICATIONS ───────────────────────── */
+    #publications { border-top:1px solid var(--line); }
+    .pub-tabs { display:flex; gap:0; margin-bottom:3rem; border:1px solid var(--line); width:fit-content; }
+    .pub-tab { font-family:var(--font-mono); font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; padding:.7rem 1.5rem; cursor:none; color:var(--muted); background:transparent; border:none; border-right:1px solid var(--line); transition:all .25s; }
+    .pub-tab:last-child { border-right:none; }
+    .pub-tab.active { background:var(--gold); color:#080b10; }
+    .pub-tab:hover:not(.active) { color:var(--gold); }
+    .pub-section { display:none; }
+    .pub-section.active { display:block; }
+    .pub-item { padding:1.75rem 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start; }
+    .pub-item:last-child { border-bottom:none; }
+    .pub-year { font-family:var(--font-mono); font-size:.68rem; color:var(--gold); letter-spacing:.1em; white-space:nowrap; padding-top:.15rem; }
+    .pub-title { font-family:var(--font-serif); font-style:italic; font-size:.98rem; color:var(--bright); line-height:1.5; margin-bottom:.4rem; }
+    .pub-authors { font-size:.78rem; color:var(--muted); margin-bottom:.3rem; }
+    .pub-journal { font-family:var(--font-mono); font-size:.68rem; color:var(--teal); letter-spacing:.05em; }
+    .pub-link { display:inline-flex; align-items:center; gap:.4rem; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; margin-top:.6rem; transition:color .25s; }
+    .pub-link:hover { color:var(--gold); }
+    .pub-link::after { content:'↗'; }
+    .patent-item { padding:1.75rem 0; border-bottom:1px solid var(--line); }
+    .patent-item:last-child { border-bottom:none; }
+    .patent-badge { display:inline-block; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; padding:.25rem .6rem; background:rgba(232,184,109,.1); border:1px solid rgba(232,184,109,.3); color:var(--gold); margin-bottom:.75rem; }
+    .patent-title { font-family:var(--font-serif); font-style:italic; font-size:.98rem; color:var(--bright); line-height:1.5; margin-bottom:.4rem; }
+    .patent-authors { font-size:.78rem; color:var(--muted); }
+    .patent-num { font-family:var(--font-mono); font-size:.68rem; color:var(--teal); margin-top:.3rem; }
+
+    /* ── EXPERIENCE ─────────────────────────── */
+    #experience { border-top:1px solid var(--line); background:var(--bg2); }
+    .exp-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+    .timeline { position:relative; padding-left:2rem; }
+    .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--line2); }
+    .tl-item { position:relative; padding-bottom:3rem; }
+    .tl-item:last-child { padding-bottom:0; }
+    .tl-item::before { content:''; position:absolute; left:-2.4rem; top:5px; width:9px; height:9px; border:1px solid var(--gold); border-radius:50%; background:var(--bg2); }
+    .tl-date { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .tl-role { font-family:var(--font-serif); font-weight:700; font-size:1rem; color:var(--bright); margin-bottom:.2rem; }
+    .tl-org { font-size:.82rem; color:var(--teal); margin-bottom:.75rem; }
+    .tl-desc { font-size:.82rem; color:var(--muted); line-height:1.75; }
+
+    /* ── BLOG ───────────────────────────────── */
+    #blog { border-top:1px solid var(--line); }
+    .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .blog-card { background:var(--bg); padding:2.5rem; display:flex; flex-direction:column; }
+    .blog-card:hover { background:var(--bg3); }
+    .blog-tag { font-family:var(--font-mono); font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; }
+    .blog-title { font-family:var(--font-serif); font-weight:700; font-size:1.05rem; color:var(--bright); line-height:1.4; margin-bottom:1rem; flex:1; }
+    .blog-excerpt { font-size:.8rem; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; }
+    .blog-meta { font-family:var(--font-mono); font-size:.62rem; color:var(--muted); display:flex; justify-content:space-between; padding-top:1.2rem; border-top:1px solid var(--line); }
+    .blog-coming { display:flex; align-items:center; justify-content:center; min-height:160px; }
+    .blog-coming span { font-family:var(--font-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border:1px dashed var(--line2); padding:.6rem 1.2rem; }
+
+    /* ── CONTACT ────────────────────────────── */
+    #contact { border-top:1px solid var(--line); background:var(--bg2); text-align:center; }
+    .contact-bg-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:900; font-size:clamp(6rem,18vw,18rem); color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.03); pointer-events:none; line-height:1; user-select:none; overflow:hidden; }
+    .contact-inner { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+    .contact-tagline { font-family:var(--font-serif); font-style:italic; font-size:clamp(1.5rem,3vw,2.5rem); color:var(--bright); margin:1rem 0 2rem; }
+    .contact-desc { font-size:.95rem; color:var(--muted); line-height:1.8; margin-bottom:3rem; }
+    .contact-emails { display:flex; flex-direction:column; gap:.6rem; margin-bottom:3rem; }
+    .contact-email { font-family:var(--font-mono); font-size:.82rem; color:var(--gold); text-decoration:none; letter-spacing:.05em; transition:color .25s; }
+    .contact-email:hover { color:var(--gold2); }
+    .social-row { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
+    .social-link { font-family:var(--font-mono); font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; border:1px solid var(--line); padding:.5rem 1rem; }
+    .social-link:hover { color:var(--gold); border-color:var(--gold); }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer { border-top:1px solid var(--line); padding:2rem 5rem; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:1; }
+    footer p { font-family:var(--font-mono); font-size:.65rem; color:var(--muted); letter-spacing:.08em; }
+    footer span { color:var(--gold); }
+
+    /* ── ANIMATIONS ─────────────────────────── */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+
+    /* ── RESPONSIVE ─────────────────────────── */
+    @media(max-width:1024px) {
+      nav { padding:1.2rem 2rem; }
+      .nav-links { display:none; }
+      section { padding:5rem 2rem; }
+      #hero { padding:8rem 2rem 4rem; }
+      .about-grid, .exp-grid { grid-template-columns:1fr; gap:3rem; }
+      .skills-outer, .research-grid, .blog-grid { grid-template-columns:1fr; }
+      .projects-grid { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:1rem; text-align:center; padding:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">H<span>.</span>A<span>.</span> Tanti</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">NPDF · Udaipur Solar Observatory, PRL</div>
+    <h1 class="hero-name reveal">
+      Harsha Avinash
+      <em>Tanti, PhD</em>
+    </h1>
+    <div class="hero-title reveal">Radio Astronomy · Instrumentation · Space Weather · Goniopolarimetry</div>
+    <p class="hero-desc reveal">
+      Researcher at the intersection of low-frequency radio astronomy and RF engineering. Bridging ionospheric signal processing, advanced antenna design, and end-to-end system development — from hardware prototyping to space-based platforms.
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#publications" class="btn btn-gold">View Publications</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="https://scholar.google.com/citations?user=i0SCF1kAAAAJ&hl=en" target="_blank" class="btn btn-ghost">Google Scholar ↗</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <div class="stat-n">5<span>+</span></div>
+        <div class="stat-l">Journal Papers</div>
+      </div>
+      <div>
+        <div class="stat-n">10<span>+</span></div>
+        <div class="stat-l">Conf. Papers</div>
+      </div>
+      <div>
+        <div class="stat-n">3</div>
+        <div class="stat-l">Patents Filed</div>
+      </div>
+      <div>
+        <div class="stat-n">6<span>+</span></div>
+        <div class="stat-l">Years Research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-body">
+      <p class="sec-label reveal">About Me</p>
+      <h2 class="sec-title reveal">Astronomer.<br><em style="color:var(--gold);font-style:italic;">Engineer. Builder.</em></h2>
+      <div class="sec-rule reveal"></div>
+      <p class="reveal">I'm a National Post Doctoral Fellow at the Udaipur Solar Observatory (Physical Research Laboratory) and a Visiting Researcher at the Department of Astronomy, Astrophysics, and Space Engineering (DAASE) at IIT Indore. My work lives at the boundary of observational astrophysics and hands-on RF engineering.</p>
+      <p class="reveal">My doctoral research tackled the formidable challenge of ionospheric interference in low-frequency radio astronomy, deploying advanced signal processing, machine learning, and RF hardware prototyping to extract faint cosmic signals from a noisy terrestrial environment. My post-doctoral work advances technology, systems, and methods — culminating in multiple filed patent applications.</p>
+      <p class="reveal">Beyond the observatory, I design RF amplifiers, develop novel antenna systems, integrate UAV positioning and communication modules, and craft end-to-end instrumentation for both ground-based and space platforms. I thrive on turning conceptual breakthroughs into robust, real-world engineering solutions.</p>
+      <p class="reveal">When not in the lab, I explore new languages, savour diverse cuisines, and dive deep into Manga.</p>
+      <div class="about-interests reveal">
+        <h4>Research Interests</h4>
+        <div class="interest-item">Passive RF source localisation & goniopolarimetry</div>
+        <div class="interest-item">Low-frequency antenna design & characterisation</div>
+        <div class="interest-item">Ionospheric interference mitigation in radio astronomy</div>
+        <div class="interest-item">Space weather via interplanetary scintillation & in-situ data</div>
+        <div class="interest-item">UAV-based antenna testing & communication systems</div>
+        <div class="interest-item">Small satellite & space instrumentation design</div>
+      </div>
+    </div>
+    <div class="about-side reveal">
+      <div class="about-card">
+        <div class="about-card-icon">📡</div>
+        <h4>Radio Astronomy</h4>
+        <p>Low-frequency observations, Direction of Arrival estimation, and advanced array signal processing.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🛰️</div>
+        <h4>Space Engineering</h4>
+        <p>Satellite system design, space VLBI, and spacecraft hardware development for real-time operations.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">⚡</div>
+        <h4>RF & Antennas</h4>
+        <p>Full-cycle design from simulation (CST, HFSS) to prototyping and field characterisation.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🌤️</div>
+        <h4>Space Weather</h4>
+        <p>Solar magnetic field analysis, heliospheric signatures, and IPS-based solar wind studies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="sec-label reveal">Technical Expertise</p>
+  <h2 class="sec-title reveal">The Tools<br>of the Trade.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="skills-outer">
+    <div class="skill-block reveal">
+      <p class="skill-cat">MATLAB — 6+ Years</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Noise Removal</span>
+        <span class="skill-tag">Modelling</span>
+        <span class="skill-tag">Programmatic GUIs</span>
+        <span class="skill-tag">Antenna & RF Toolbox</span>
+        <span class="skill-tag">Signal Processing</span>
+        <span class="skill-tag">Simulink</span>
+        <span class="skill-tag">Math & Stats Toolbox</span>
+        <span class="skill-tag">Image Processing</span>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <p class="skill-cat">Programming Languages</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python — Proficient</span>
+        <span class="skill-tag">Embedded C — Intermediate</span>
+        <span class="skill-tag">C — Beginner</span>
+        <span class="skill-tag">C++ — Beginner</span>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <p class="skill-cat">Antenna & RF Simulation</p>
+      <div class="skill-tags">
+        <span class="skill-tag">CST Microwave Studio</span>
+        <span class="skill-tag">Ansys HFSS</span>
+        <span class="skill-tag">4NEC2</span>
+        <span class="skill-tag">Cadence AWR</span>
+        <span class="skill-tag">Keysight ADS</span>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <p class="skill-cat">Microcontrollers & SoCs</p>
+      <div class="skill-tags">
+        <span class="skill-tag">PIC 8/16-bit</span>
+        <span class="skill-tag">ATmega 8–32-bit</span>
+        <span class="skill-tag">Raspberry Pi</span>
+        <span class="skill-tag">Jetson Nano</span>
+        <span class="skill-tag">Jetson Orin Nano</span>
+        <span class="skill-tag">Jetson AGX Orin</span>
+        <span class="skill-tag">Tinker Board</span>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <p class="skill-cat">Data Formats</p>
+      <div class="skill-tags">
+        <span class="skill-tag">NetCDF</span>
+        <span class="skill-tag">CDF</span>
+        <span class="skill-tag">HDF5</span>
+        <span class="skill-tag">Pickle (.pkl)</span>
+        <span class="skill-tag">RINEX</span>
+        <span class="skill-tag">ASCII</span>
+        <span class="skill-tag">FITS</span>
+        <span class="skill-tag">Binary</span>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <p class="skill-cat">Platforms & OS</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Windows</span>
+        <span class="skill-tag">macOS</span>
+        <span class="skill-tag">SDRs</span>
+        <span class="skill-tag">UAV Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="sec-label reveal">Focus Areas</p>
+  <h2 class="sec-title reveal">Research<br>Frontiers.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="research-grid">
+    <div class="research-card reveal">
+      <div class="research-icon">🔭</div>
+      <h3>Passive RF Source Localisation</h3>
+      <p>Development of advanced algorithms (SAM, ML-based) for direction-of-arrival estimation using tri-axial antenna configurations — enabling goniopolarimetric characterisation of low-frequency radio sources.</p>
+    </div>
+    <div class="research-card reveal reveal-delay-1">
+      <div class="research-icon">📶</div>
+      <h3>Low-Frequency Radio Instrumentation</h3>
+      <p>Design, simulation, and prototyping of wideband antennas (bi-conical, tri-axial dipoles, patch arrays) and RF front-ends optimised for the challenging low-frequency radio environment.</p>
+    </div>
+    <div class="research-card reveal reveal-delay-2">
+      <div class="research-icon">☀️</div>
+      <h3>Space Weather & Solar Physics</h3>
+      <p>Multi-instrument analysis of the inner heliosphere using interplanetary scintillation and in-situ satellite data to study declining solar magnetic fields and their propagation effects.</p>
+    </div>
+    <div class="research-card reveal reveal-delay-3">
+      <div class="research-icon">🚀</div>
+      <h3>Space & UAV Systems</h3>
+      <p>Spacecraft hardware design, space VLBI with hybrid satellite orbits, UAV-based antenna characterisation, and real-time lunar terrain detection for autonomous landing systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="sec-label reveal">Scholarly Output</p>
+  <h2 class="sec-title reveal">Patents &<br>Publications.</h2>
+  <div class="sec-rule reveal"></div>
+
+  <div class="pub-tabs reveal">
+    <button class="pub-tab active" onclick="showTab('journals')">Journal Papers</button>
+    <button class="pub-tab" onclick="showTab('conferences')">Conference Papers</button>
+    <button class="pub-tab" onclick="showTab('patents')">Patents</button>
+  </div>
+
+  <!-- JOURNALS -->
+  <div class="pub-section active" id="tab-journals">
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">Development of a machine learning-based radio source localization algorithm for tri-axial antenna configuration</div>
+        <div class="pub-authors">H.A. Tanti, A. Datta, T. Biswas, and A. Tripathi</div>
+        <div class="pub-journal">Journal of Astrophysics and Astronomy · Vol. 46, No. 5</div>
+        <a href="https://doi.org/10.1007/s12036-024-10032-w" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">Space VLBI — Exploring the Potential of Hybrid Orbit Configurations</div>
+        <div class="pub-authors">A. Datta, T. Biswas, H.A. Tanti, and S.K. Pal</div>
+        <div class="pub-journal">Experimental Astronomy · Vol. 60, No. 23</div>
+        <a href="https://doi.org/10.1007/s10686-025-10031-x" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">Inner-heliospheric Signatures of Steadily Declining Solar Magnetic Fields and Their Possible Implications</div>
+        <div class="pub-authors">H.A. Tanti, S.K. Bisoi, A. Datta, and K. Fujiki</div>
+        <div class="pub-journal">The Astrophysical Journal · Vol. 979, No. 2</div>
+        <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ada38a/meta" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Snapshot Averaged Matrix Pencil Method (SAM) for Direction of Arrival Estimation</div>
+        <div class="pub-authors">H.A. Tanti, A. Datta, & S. Ananthakrishnan</div>
+        <div class="pub-journal">Experimental Astronomy · Vol. 56, pp. 267–292</div>
+        <a href="https://doi.org/10.1007/s10686-023-09897-6" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Detection and Validation of Cloud Top Height From Scanning Ka-Band Radar Measurements Using Digital Image Processing</div>
+        <div class="pub-authors">S.K. Das, P.P. Joshi, R.S. Kokitkar, U.V.M. Krishna, H.A. Tanti and A.C. Phadake</div>
+        <div class="pub-journal">IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing · Vol. 14, pp. 1848–1856</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/9298456" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFERENCES -->
+  <div class="pub-section" id="tab-conferences">
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">A Low-Cost Radiometric Monitoring of Ionospheric and Auroral Variability in the Arctic</div>
+        <div class="pub-authors">B. Brawar, H.A. Tanti, A. Biswas, A. Shudhanshu, A. Datta, and S. Das</div>
+        <div class="pub-journal">MAPCON 2025 · Accepted</div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">A Study of (U,V) Coverage in Space Based VLBI Using Hybrid Satellite Orbits</div>
+        <div class="pub-authors">T. Biswas, H.A. Tanti, A. Datta and S.K. Pal</div>
+        <div class="pub-journal">MAPCON 2025 · Accepted</div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">An Overview of Arctic RFI Monitoring Survey</div>
+        <div class="pub-authors">S. Ghosh, H.A. Tanti, A. Datta and S. Das</div>
+        <div class="pub-journal">IEEE India Geoscience and Remote Sensing Symposium (InGARSS) · Goa, 2024</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10984179" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">A Study of Wire Bi-Conical Antenna for Wide-Band Application in Radio Astronomy</div>
+        <div class="pub-authors">H.A. Tanti, A.K. Pradhan and A. Datta</div>
+        <div class="pub-journal">IEEE Wireless Antenna and Microwave Symposium (WAMS) · Visakhapatnam, 2024</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10527955" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Tri-axial Patch Antenna Array Configuration for Direction of Arrival (DoA) Application</div>
+        <div class="pub-authors">H.A. Tanti, K. Sahu, A. Datta and A.K. Pradhan</div>
+        <div class="pub-journal">8th International Conference on Computers and Devices for Communication (CODEC) · Kolkata</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10465763" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Concept Study of UV Coverage of Radio Interferometry in Space Using Small Satellites</div>
+        <div class="pub-authors">T. Biswas, A. Datta, H.A. Tanti and S.K. Pal</div>
+        <div class="pub-journal">CODEC 2023 · Kolkata</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10466038" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Deep Learning Based Real-Time Lunar Terrain Detection for Autonomous Landing Approach</div>
+        <div class="pub-authors">K.S. Shekhar, H.A. Tanti, and A. Datta</div>
+        <div class="pub-journal">CODEC 2023 · Kolkata</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10466224" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Monitoring Infrastructure Faults with YOLOv5, Assisting Safety Inspectors</div>
+        <div class="pub-authors">K.S. Shekhar, H.A. Tanti, A. Datta and K. Aggarwal</div>
+        <div class="pub-journal">ICICIS 2023 · Pune</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10430270" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Microstrip Patch Antenna as a Paper Moisture Sensor</div>
+        <div class="pub-authors">P.S. Bansode, H.A. Tanti, A.C. Joshi, Y.J. Gaikwad, R.C. Aiyer and S.A. Gangal</div>
+        <div class="pub-journal">Journal of Physics: Conference Series · ICCTPP 2022</div>
+        <a href="https://iopscience.iop.org/article/10.1088/1742-6596/2426/1/012061/meta" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Validation of Direction of Arrival with Orthogonal Tri-Dipole Antenna for SEAMS</div>
+        <div class="pub-authors">H.A. Tanti and A. Datta</div>
+        <div class="pub-journal">IEEE Indian Conference on Antennas and Propagation (InCAP) · Jaipur, 2021</div>
+        <a href="https://ieeexplore.ieee.org/abstract/document/9726500" target="_blank" class="pub-link">Article Link</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATENTS -->
+  <div class="pub-section" id="tab-patents">
+    <div class="patent-item">
+      <div class="patent-badge">Provisional Patent Filed</div>
+      <div class="patent-title">Systems and Methods for characterising Low-Frequency Antenna</div>
+      <div class="patent-authors">H.A. Tanti and A. Datta</div>
+      <div class="patent-num">Application No: 202521019265</div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-badge">Patent Filed</div>
+      <div class="patent-title">Systems and Methods for Detecting one or more Cracks in Infrastructure using Unmanned Vehicles</div>
+      <div class="patent-authors">A. Datta, K.S. Shekhar, H.A. Tanti, and R. Katta</div>
+      <div class="patent-num">Application No: 202521051009</div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-badge">In Filing Process</div>
+      <div class="patent-title">Spacecraft Hardware Operation Unit for Real-time Yield Analysis</div>
+      <div class="patent-authors">S. Hazra, A. Datta, A. Dutta, and H.A. Tanti</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="sec-label reveal">Career</p>
+  <h2 class="sec-title reveal">Experience &<br>Education.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="exp-grid">
+    <div>
+      <h3 style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;" class="reveal">Work Experience</h3>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">2024 — Present</div>
+          <div class="tl-role">National Post Doctoral Fellow (NPDF)</div>
+          <div class="tl-org">Udaipur Solar Observatory · Physical Research Laboratory (PRL), Udaipur</div>
+          <div class="tl-desc">Post-doctoral research focused on technology, system, and method development in RF and space instrumentation, leading to multiple patent filings. Visiting researcher at DAASE, IIT Indore.</div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">2018 — 2024</div>
+          <div class="tl-role">PhD Researcher</div>
+          <div class="tl-org">Indian Institute of Technology Indore (IIT Indore)</div>
+          <div class="tl-desc">Doctoral work on ionospheric interference mitigation in low-frequency radio astronomy. Developed SAM algorithm for DoA estimation, designed tri-axial antenna systems, and built ML-based RF source localisation tools.</div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">2018 — 2024</div>
+          <div class="tl-role">Teaching Assistant</div>
+          <div class="tl-org">IIT Indore · DAASE</div>
+          <div class="tl-desc">Courses: Electrodynamics, Radio Astronomy, and Space Engineering. Mentored student projects in RF system design, simulation, and field testing.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;" class="reveal">Education</h3>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">2018 — 2024</div>
+          <div class="tl-role">Doctor of Philosophy (PhD)</div>
+          <div class="tl-org">Indian Institute of Technology Indore</div>
+          <div class="tl-desc">Dept. of Astronomy, Astrophysics & Space Engineering. Thesis focused on direction of arrival estimation and ionospheric RFI mitigation for low-frequency radio astronomy.</div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">Prior</div>
+          <div class="tl-role">Bachelor's / Master's Degree</div>
+          <div class="tl-org">Electronics & Telecommunication Engineering</div>
+          <div class="tl-desc">Foundation in RF engineering, signal processing, embedded systems, and telecommunications — underpinning the interdisciplinary nature of current research.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <p class="sec-label reveal">Writing</p>
+  <h2 class="sec-title reveal">Blog &<br>Perspectives.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <div class="blog-tag">Radio Astronomy</div>
+      <div class="blog-title">Why Low-Frequency Radio Astronomy Is So Hard — And So Rewarding</div>
+      <div class="blog-excerpt">The ionosphere is both a window and a wall. Understanding why frequencies below 100 MHz are both scientifically rich and technically treacherous.</div>
+      <div class="blog-meta"><span>Coming Soon</span><span>5 min read</span></div>
+    </div>
+    <div class="blog-card reveal reveal-delay-1">
+      <div class="blog-tag">Instrumentation</div>
+      <div class="blog-title">From Simulation to Prototype: Building Wideband Antennas for Space</div>
+      <div class="blog-excerpt">A behind-the-scenes look at the journey from CST models to physical hardware — where theory meets the soldering iron.</div>
+      <div class="blog-meta"><span>Coming Soon</span><span>7 min read</span></div>
+    </div>
+    <div class="blog-card reveal reveal-delay-2">
+      <div class="blog-tag">Space Weather</div>
+      <div class="blog-title">Reading the Sun's Magnetic Heartbeat Through Interplanetary Scintillation</div>
+      <div class="blog-excerpt">How fluctuations in distant radio source signals reveal the invisible structure of the solar wind and its long-term changes.</div>
+      <div class="blog-meta"><span>Coming Soon</span><span>6 min read</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg-text">Contact</div>
+  <div class="contact-inner">
+    <p class="sec-label reveal">Get in Touch</p>
+    <div class="contact-tagline reveal">Let's build<br><em>something remarkable.</em></div>
+    <p class="contact-desc reveal">Whether you share a passion for antennas, RF systems, radio astronomy, or system development — or you're looking to collaborate on research — I'd love to hear from you.</p>
+    <div class="contact-emails reveal">
+      <a href="mailto:harshaavinashtanti@gmail.com" class="contact-email">harshaavinashtanti@gmail.com</a>
+      <a href="mailto:harshat@prl.res.in" class="contact-email">harshat@prl.res.in</a>
+      <a href="mailto:tantiharsha@iiti.ac.in" class="contact-email">tantiharsha@iiti.ac.in</a>
+    </div>
+    <div class="social-row reveal">
+      <a href="https://www.linkedin.com/in/harsha-avinash-tanti-0a8605104" target="_blank" class="social-link">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=i0SCF1kAAAAJ&hl=en" target="_blank" class="social-link">Google Scholar</a>
+      <a href="https://www.researchgate.net/profile/Harsha-Avinash-Tanti" target="_blank" class="social-link">ResearchGate</a>
+      <a href="https://github.com/Dragon-Master-95" target="_blank" class="social-link">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Harsha Avinash Tanti, PhD</span> · All rights reserved.</p>
+  <p>Hosted on <span>GitHub Pages</span></p>
+</footer>
+
+<script>
+  // ── Stars ────────────────────────────────────────────
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  function initStars() {
+    stars = Array.from({length:200}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2 + .2,
+      o: Math.random() * .6 + .1,
+      speed: Math.random() * .3 + .05
+    }));
+  }
+  function drawStars() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,220,255,${s.o})`;
+      ctx.fill();
+      s.o += s.speed * .01 * (Math.random()>.5?1:-1);
+      s.o = Math.max(.05, Math.min(.8, s.o));
+    });
+    requestAnimationFrame(drawStars);
+  }
+  resize(); initStars(); drawStars();
+  window.addEventListener('resize', () => { resize(); initStars(); });
+
+  // ── Cursor ───────────────────────────────────────────
+  const cur = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let tx=0,ty=0;
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
+    tx = e.clientX; ty = e.clientY;
+  });
+  (function moveTrail(){
+    trail.style.left = tx+'px'; trail.style.top = ty+'px';
+    requestAnimationFrame(moveTrail);
+  })();
+  document.querySelectorAll('a,button,.skill-tag,.research-card,.blog-card,.about-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+  });
+
+  // ── Pub tabs ─────────────────────────────────────────
+  function showTab(id) {
+    document.querySelectorAll('.pub-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.pub-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ── Scroll reveal ─────────────────────────────────────
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('#hero .reveal').forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
