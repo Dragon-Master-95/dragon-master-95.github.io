@@ -4,7 +4,16 @@ url: "https://www.harshaavinashtanti.phd"
 
 footer_name: "Harsha Avinash Tanti, PhD"
 
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+
 # Files/folders Jekyll should not try to process or copy as-is
 exclude:
   - README.md
   - LICENSE
+  - Gemfile
+  - assets/images/blog/README.md
+  - assets/images/blog/*/README.md

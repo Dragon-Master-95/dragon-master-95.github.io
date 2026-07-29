@@ -1,8 +1,11 @@
+# `url` is optional — set it once the post exists in _posts/ so the card links through to
+# the full article. Omit it (like the two placeholders below) to keep a card as a teaser only.
 - tag: "Radio Astronomy"
   title: "Why Low-Frequency Radio Astronomy Is So Hard — And So Rewarding"
   excerpt: "The ionosphere is both a window and a wall. Understanding why frequencies below 100 MHz are both scientifically rich and technically treacherous."
   status: "Coming Soon"
   read_time: "5 min read"
+  url: "/blog/2026/07/29/why-low-frequency-radio-astronomy-is-so-hard/"
 
 - tag: "Instrumentation"
   title: "From Simulation to Prototype: Building Wideband Antennas for Space"
