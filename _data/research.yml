@@ -1,0 +1,15 @@
+- icon: "🔭"
+  title: "Passive RF Source Localisation"
+  text: "Development of advanced algorithms (SAM, ML-based) for direction-of-arrival estimation using tri-axial antenna configurations — enabling goniopolarimetric characterisation of low-frequency radio sources."
+
+- icon: "📶"
+  title: "Low-Frequency Radio Instrumentation"
+  text: "Design, simulation, and prototyping of wideband antennas (bi-conical, tri-axial dipoles, patch arrays) and RF front-ends optimised for the challenging low-frequency radio environment."
+
+- icon: "☀️"
+  title: "Space Weather & Solar Physics"
+  text: "Multi-instrument analysis of the inner heliosphere using interplanetary scintillation and in-situ satellite data to study declining solar magnetic fields and their propagation effects."
+
+- icon: "🚀"
+  title: "Space & UAV Systems"
+  text: "Spacecraft hardware design, space VLBI with hybrid satellite orbits, UAV-based antenna characterisation, and real-time lunar terrain detection for autonomous landing systems."

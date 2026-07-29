@@ -1,0 +1,10 @@
+title: "Harsha Avinash Tanti, PhD — Radio Astronomer & Instrumentation Engineer"
+description: "Personal & research portfolio of Dr. Harsha Avinash Tanti — Radio Astronomy, RF Instrumentation, Space Weather."
+url: "https://www.harshaavinashtanti.phd"
+
+footer_name: "Harsha Avinash Tanti, PhD"
+
+# Files/folders Jekyll should not try to process or copy as-is
+exclude:
+  - README.md
+  - LICENSE

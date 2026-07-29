@@ -1,0 +1,15 @@
+<!-- RESEARCH -->
+<section id="research">
+  <p class="sec-label reveal">Focus Areas</p>
+  <h2 class="sec-title reveal">Research<br>Frontiers.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="research-grid">
+    {% for item in site.data.research %}
+    <div class="research-card reveal{% if forloop.index0 > 0 %} reveal-delay-{{ forloop.index0 }}{% endif %}">
+      <div class="research-icon">{{ item.icon }}</div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>

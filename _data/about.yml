@@ -1,0 +1,21 @@
+paragraphs:
+  - "I am currently a National Postdoctoral Fellow at the Udaipur Solar Observatory of the Physical Research Laboratory, and a Visiting Researcher in the Department of Astronomy, Astrophysics and Space Engineering at Indian Institute of Technology Indore. My research lies at the intersection of observational astrophysics, radio instrumentation, signal processing, and applied RF engineering."
+  - "My work focuses on understanding the Sun and the interplanetary medium using radio observations and interferometric techniques. A central theme of my research is extracting weak astrophysical radio signals in the presence of ionospheric distortions, terrestrial interference, and instrumental noise. During my doctoral research, I developed analytically derived and machine-learning–based approaches for passive RF source localisation and direction-of-arrival estimation, along with the design and prototyping of RF instrumentation including antennas, amplifiers, and heterodyne receivers."
+  - "My postdoctoral research extends this foundation toward solar radio studies and technology development for space and ground-based observational systems. I investigate radio signatures of energetic particles and solar eruptions to infer plasma properties such as density, magnetic field strength, and particle propagation relevant to space weather. Alongside the scientific work, I also develop digital signal processing pipelines and instrumentation systems using SDRs, FPGAs, and embedded platforms for interferometric observations in the microwave regime."
+  - "More broadly, my technical work spans antenna design and electromagnetic simulation, RF front-end development, UAV-based antenna characterization systems, and the integration of positioning, communication, and sensing modules for experimental platforms. I enjoy working across the full development pipeline—from theoretical modelling and algorithm design to hardware prototyping, system integration, and real-world deployment."
+  - "Several of these technology developments have resulted in patent applications and interdisciplinary collaborations. What motivates me most is translating scientific ideas into robust engineering systems that enable new observational capabilities and practical technological solutions."
+  - "Outside research, I enjoy learning new languages, exploring diverse cuisines, and immersing myself in Manga."
+
+cards:
+  - icon: "📡"
+    title: "Radio Astronomy"
+    text: "Low-frequency observations, Direction of Arrival estimation, and advanced array signal processing."
+  - icon: "🛰️"
+    title: "Space Engineering"
+    text: "Satellite system design, space VLBI, and spacecraft hardware development for real-time operations."
+  - icon: "⚡"
+    title: "RF & Antennas"
+    text: "Full-cycle design from simulation (CST, HFSS) to prototyping and field characterisation."
+  - icon: "🌤️"
+    title: "Space Weather"
+    text: "Solar magnetic field analysis, heliospheric signatures, and IPS-based solar wind studies."

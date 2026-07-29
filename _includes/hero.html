@@ -1,0 +1,27 @@
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">{{ site.data.hero.eyebrow }}</div>
+    <h1 class="hero-name reveal">
+      {{ site.data.hero.name_first }} <em>{{ site.data.hero.name_suffix }}</em>
+    </h1>
+    <div class="hero-title reveal">{{ site.data.hero.tagline }}</div>
+    <p class="hero-desc reveal">
+      {{ site.data.hero.description }}
+    </p>
+    <div class="hero-ctas reveal">
+      {% for cta in site.data.hero.ctas %}
+      <a href="{{ cta.href }}" class="btn btn-{{ cta.style }}"{% if cta.external %} target="_blank"{% endif %}>{{ cta.text }}</a>
+      {% endfor %}
+    </div>
+    <div class="hero-stats reveal">
+      {% for stat in site.data.hero.stats %}
+      <div>
+        <div class="stat-n">{{ stat.number }}<span>{{ stat.suffix }}</span></div>
+        <div class="stat-l">{{ stat.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

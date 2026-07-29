@@ -1,0 +1,20 @@
+tagline: "Let's build<br><em>something remarkable.</em>"
+description: "Whether you share a passion for antennas, RF systems, radio astronomy, or system development — or you're looking to collaborate on research — I'd love to hear from you."
+
+emails:
+  - display: "harshaavinashtanti[at]gmail[dot]com"
+    href: "mailto:harshaavinashtanti@gmail.com"
+  - display: "harshat[at]prl[dot]res[dot]in"
+    href: "mailto:harshat@prl.res.in"
+  - display: "tantiharsha[at]iiti[dot]ac[dot]in"
+    href: "mailto:tantiharsha@iiti.ac.in"
+
+socials:
+  - label: "LinkedIn"
+    href: "https://www.linkedin.com/in/harshaavinashtanti/"
+  - label: "Google Scholar"
+    href: "https://scholar.google.com/citations?user=i0SCF1kAAAAJ&hl=en"
+  - label: "ResearchGate"
+    href: "https://www.researchgate.net/profile/Harsha-Avinash-Tanti"
+  - label: "GitHub"
+    href: "https://github.com/Dragon-Master-95"

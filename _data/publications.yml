@@ -1,0 +1,92 @@
+# Add a new entry at the top of the relevant list (journals/conferences) to have it appear first.
+# `link` is optional — omit it (or leave blank) for accepted/in-press items with no URL yet.
+
+journals:
+  - year: 2025
+    title: "Development of a machine learning-based radio source localization algorithm for tri-axial antenna configuration"
+    authors: "H.A. Tanti, A. Datta, T. Biswas, and A. Tripathi"
+    journal: "Journal of Astrophysics and Astronomy · Vol. 46, No. 5"
+    link: "https://doi.org/10.1007/s12036-024-10032-w"
+
+  - year: 2025
+    title: "Space VLBI — Exploring the Potential of Hybrid Orbit Configurations"
+    authors: "A. Datta, T. Biswas, H.A. Tanti, and S.K. Pal"
+    journal: "Experimental Astronomy · Vol. 60, No. 23"
+    link: "https://doi.org/10.1007/s10686-025-10031-x"
+
+  - year: 2025
+    title: "Inner-heliospheric Signatures of Steadily Declining Solar Magnetic Fields and Their Possible Implications"
+    authors: "H.A. Tanti, S.K. Bisoi, A. Datta, and K. Fujiki"
+    journal: "The Astrophysical Journal · Vol. 979, No. 2"
+    link: "https://iopscience.iop.org/article/10.3847/1538-4357/ada38a/meta"
+
+  - year: 2023
+    title: "Snapshot Averaged Matrix Pencil Method (SAM) for Direction of Arrival Estimation"
+    authors: "H.A. Tanti, A. Datta, & S. Ananthakrishnan"
+    journal: "Experimental Astronomy · Vol. 56, pp. 267–292"
+    link: "https://doi.org/10.1007/s10686-023-09897-6"
+
+  - year: 2021
+    title: "Detection and Validation of Cloud Top Height From Scanning Ka-Band Radar Measurements Using Digital Image Processing"
+    authors: "S.K. Das, P.P. Joshi, R.S. Kokitkar, U.V.M. Krishna, H.A. Tanti and A.C. Phadake"
+    journal: "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing · Vol. 14, pp. 1848–1856"
+    link: "https://ieeexplore.ieee.org/abstract/document/9298456"
+
+conferences:
+  - year: 2025
+    title: "A Low-Cost Radiometric Monitoring of Ionospheric and Auroral Variability in the Arctic"
+    authors: "B. Brawar, H.A. Tanti, A. Biswas, A. Shudhanshu, A. Datta, and S. Das"
+    journal: "MAPCON 2025 · Accepted"
+
+  - year: 2025
+    title: "A Study of (U,V) Coverage in Space Based VLBI Using Hybrid Satellite Orbits"
+    authors: "T. Biswas, H.A. Tanti, A. Datta and S.K. Pal"
+    journal: "MAPCON 2025 · Accepted"
+
+  - year: 2024
+    title: "An Overview of Arctic RFI Monitoring Survey"
+    authors: "S. Ghosh, H.A. Tanti, A. Datta and S. Das"
+    journal: "IEEE India Geoscience and Remote Sensing Symposium (InGARSS) · Goa, 2024"
+    link: "https://ieeexplore.ieee.org/abstract/document/10984179"
+
+  - year: 2024
+    title: "A Study of Wire Bi-Conical Antenna for Wide-Band Application in Radio Astronomy"
+    authors: "H.A. Tanti, A.K. Pradhan and A. Datta"
+    journal: "IEEE Wireless Antenna and Microwave Symposium (WAMS) · Visakhapatnam, 2024"
+    link: "https://ieeexplore.ieee.org/abstract/document/10527955"
+
+  - year: 2023
+    title: "Tri-axial Patch Antenna Array Configuration for Direction of Arrival (DoA) Application"
+    authors: "H.A. Tanti, K. Sahu, A. Datta and A.K. Pradhan"
+    journal: "8th International Conference on Computers and Devices for Communication (CODEC) · Kolkata"
+    link: "https://ieeexplore.ieee.org/abstract/document/10465763"
+
+  - year: 2023
+    title: "Concept Study of UV Coverage of Radio Interferometry in Space Using Small Satellites"
+    authors: "T. Biswas, A. Datta, H.A. Tanti and S.K. Pal"
+    journal: "CODEC 2023 · Kolkata"
+    link: "https://ieeexplore.ieee.org/abstract/document/10466038"
+
+  - year: 2023
+    title: "Deep Learning Based Real-Time Lunar Terrain Detection for Autonomous Landing Approach"
+    authors: "K.S. Shekhar, H.A. Tanti, and A. Datta"
+    journal: "CODEC 2023 · Kolkata"
+    link: "https://ieeexplore.ieee.org/abstract/document/10466224"
+
+  - year: 2023
+    title: "Monitoring Infrastructure Faults with YOLOv5, Assisting Safety Inspectors"
+    authors: "K.S. Shekhar, H.A. Tanti, A. Datta and K. Aggarwal"
+    journal: "ICICIS 2023 · Pune"
+    link: "https://ieeexplore.ieee.org/abstract/document/10430270"
+
+  - year: 2022
+    title: "Microstrip Patch Antenna as a Paper Moisture Sensor"
+    authors: "P.S. Bansode, H.A. Tanti, A.C. Joshi, Y.J. Gaikwad, R.C. Aiyer and S.A. Gangal"
+    journal: "Journal of Physics: Conference Series · ICCTPP 2022"
+    link: "https://iopscience.iop.org/article/10.1088/1742-6596/2426/1/012061/meta"
+
+  - year: 2021
+    title: "Validation of Direction of Arrival with Orthogonal Tri-Dipole Antenna for SEAMS"
+    authors: "H.A. Tanti and A. Datta"
+    journal: "IEEE Indian Conference on Antennas and Propagation (InCAP) · Jaipur, 2021"
+    link: "https://ieeexplore.ieee.org/abstract/document/9726500"

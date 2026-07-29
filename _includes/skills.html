@@ -1,0 +1,18 @@
+<!-- SKILLS -->
+<section id="skills">
+  <p class="sec-label reveal">Technical Expertise</p>
+  <h2 class="sec-title reveal">The Tools<br>of the Trade.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="skills-outer">
+    {% for block in site.data.skills %}
+    <div class="skill-block reveal">
+      <p class="skill-cat">{{ block.category }}</p>
+      <div class="skill-tags">
+        {% for tag in block.tags %}
+        <span class="skill-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

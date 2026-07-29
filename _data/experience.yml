@@ -1,0 +1,52 @@
+# `desc` is a list — add more than one line if a role needs multiple description bullets.
+
+work:
+  - date: "Jan, 2026 — Present"
+    role: "National Post Doctoral Fellow (NPDF)"
+    org: "Udaipur Solar Observatory · Physical Research Laboratory (PRL), Udaipur"
+    desc:
+      - "Investigating solar eruptions and energetic particle dynamics using microwave radio observations, while developing DSP pipelines and interferometric imaging techniques for solar radio studies."
+
+  - date: "Dec, 2024 — Dec, 2025"
+    role: "Translational Research Fellow (TRF)"
+    org: "Department of Astronomy, Astrophysics and Space Enggineering · Indian Institute of Technology Indore"
+    desc:
+      - "Developed UAV-based antenna characterization systems integrating SDRs, RTK positioning, RF measurements, and embedded platforms for precision antenna testing."
+
+  - date: "Jul, 2019 — Dec, 2024"
+    role: "PhD Researcher and Teaching Assistant"
+    org: "Department of Astronomy, Astrophysics and Space Enggineering · Indian Institute of Technology Indore"
+    desc:
+      - "Developed analytical and machine-learning–based RF source localisation techniques and instrumentation to investigate heliospheric plasma and the interplanetary medium through interplanetary scintillation studies."
+      - "Assisted in teaching postgraduate courses in radio astronomy, electrodynamics, and space instrumentation while mentoring student projects in antenna design, RF systems, and signal processing."
+
+  - date: "May, 2019 — Jun, 2019"
+    role: "Scientific Assistant"
+    org: "Department of Astronomy, Astrophysics and Space Enggineering · Indian Institute of Technology Indore"
+    desc:
+      - "Designed and deployed a low-frequency radiometer using FPGA-based hardware and performed RF component characterization for radio instrumentation."
+
+  - date: "Aug, 2018 — May, 2019"
+    role: "Teaching Assistant"
+    org: "Department of Electronic Science · Savitribai Phule Pune University"
+    desc:
+      - "Supported postgraduate teaching in electronic science by developing laboratory experiments, course materials, and mini-projects in embedded systems, PCB design, and image processing."
+
+education:
+  - date: "Jul, 2019 — Dec, 2024"
+    role: "Doctor of Philosophy (PhD)"
+    org: "Department of Astronomy, Astrophysics and Space Enggineering · Indian Institute of Technology Indore"
+    desc:
+      - "Doctoral research focused on radio astronomy and heliophysics, developing RF source localisation methods and instrumentation to study the interplanetary medium using interplanetary scintillation."
+
+  - date: "Jun, 2016 — Jun, 2018"
+    role: "M.Sc. in Electronic Science"
+    org: "Department of Electronic Science · Savitribai Phule Pune University"
+    desc:
+      - "Specialized in electronic instrumentation and signal analysis, with research on retrieving microphysical properties of high-altitude clouds using Ka-band radar and machine learning."
+
+  - date: "Jun, 2012 — Jun, 2016"
+    role: "B.Sc. with Electronics Hons."
+    org: "University of Calcutta"
+    desc:
+      - "Undergraduate studies in physical sciences with Honours in Electronics."

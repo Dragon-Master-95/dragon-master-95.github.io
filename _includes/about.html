@@ -1,0 +1,22 @@
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-body">
+      <p class="sec-label reveal">About Me</p>
+      <h2 class="sec-title reveal">Astronomer.<br><em style="color:var(--gold);font-style:italic;">Engineer. Builder.</em></h2>
+      <div class="sec-rule reveal"></div>
+      {% for p in site.data.about.paragraphs %}
+      <p class="reveal">{{ p }}</p>
+      {% endfor %}
+    </div>
+    <div class="about-side reveal">
+      {% for card in site.data.about.cards %}
+      <div class="about-card">
+        <div class="about-card-icon">{{ card.icon }}</div>
+        <h4>{{ card.title }}</h4>
+        <p>{{ card.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<!-- BLOG -->
+<section id="blog">
+  <p class="sec-label reveal">Writing</p>
+  <h2 class="sec-title reveal">Blog &<br>Perspectives.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="blog-grid">
+    {% for post in site.data.blog %}
+    <div class="blog-card reveal{% if forloop.index0 > 0 %} reveal-delay-{{ forloop.index0 }}{% endif %}">
+      <div class="blog-tag">{{ post.tag }}</div>
+      <div class="blog-title">{{ post.title }}</div>
+      <div class="blog-excerpt">{{ post.excerpt }}</div>
+      <div class="blog-meta"><span>{{ post.status }}</span><span>{{ post.read_time }}</span></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

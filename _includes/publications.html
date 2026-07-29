@@ -1,0 +1,54 @@
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="sec-label reveal">Scholarly Output</p>
+  <h2 class="sec-title reveal">Patents &<br>Publications.</h2>
+  <div class="sec-rule reveal"></div>
+
+  <div class="pub-tabs reveal">
+    <button class="pub-tab active" onclick="showTab('journals', this)">Journal Papers</button>
+    <button class="pub-tab" onclick="showTab('conferences', this)">Conference Papers</button>
+    <button class="pub-tab" onclick="showTab('patents', this)">Patents</button>
+  </div>
+
+  <!-- JOURNALS -->
+  <div class="pub-section active" id="tab-journals">
+    {% for pub in site.data.publications.journals %}
+    <div class="pub-item">
+      <div class="pub-year">{{ pub.year }}</div>
+      <div>
+        <div class="pub-title">{{ pub.title }}</div>
+        <div class="pub-authors">{{ pub.authors }}</div>
+        <div class="pub-journal">{{ pub.journal }}</div>
+        {% if pub.link %}<a href="{{ pub.link }}" target="_blank" class="pub-link">Article Link</a>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- CONFERENCES -->
+  <div class="pub-section" id="tab-conferences">
+    {% for pub in site.data.publications.conferences %}
+    <div class="pub-item">
+      <div class="pub-year">{{ pub.year }}</div>
+      <div>
+        <div class="pub-title">{{ pub.title }}</div>
+        <div class="pub-authors">{{ pub.authors }}</div>
+        <div class="pub-journal">{{ pub.journal }}</div>
+        {% if pub.link %}<a href="{{ pub.link }}" target="_blank" class="pub-link">Article Link</a>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- PATENTS -->
+  <div class="pub-section" id="tab-patents">
+    {% for patent in site.data.patents %}
+    <div class="patent-item">
+      <div class="patent-badge">{{ patent.badge }}</div>
+      <div class="patent-title">{{ patent.title }}</div>
+      <div class="patent-authors">{{ patent.authors }}</div>
+      {% if patent.number %}<div class="patent-num">{{ patent.number }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>

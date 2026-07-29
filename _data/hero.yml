@@ -1,0 +1,34 @@
+eyebrow: "NPDF · Udaipur Solar Observatory, PRL"
+name_first: "Harsha Avinash Tanti,"
+name_suffix: "PhD"
+tagline: "Radio Astronomy · Instrumentation (RF, Digital & Embedded) · Space Weather · Goniopolarimetry · Technology Development"
+description: >
+  A Researcher exploring the Sun and heliosphere through radio observations and advanced instrumentation.
+  Combining signal processing, antenna design, and RF systems to extract weak cosmic signals.
+  Driven by technology development that bridges scientific discovery and real-world engineering systems.
+
+ctas:
+  - text: "View Publications"
+    href: "#publications"
+    style: "gold"
+  - text: "Get in Touch"
+    href: "#contact"
+    style: "ghost"
+  - text: "Google Scholar ↗"
+    href: "https://scholar.google.com/citations?user=i0SCF1kAAAAJ&hl=en"
+    style: "ghost"
+    external: true
+
+stats:
+  - number: "5"
+    suffix: "+"
+    label: "Journal Papers"
+  - number: "10"
+    suffix: "+"
+    label: "Conf. Papers"
+  - number: "3"
+    suffix: ""
+    label: "Patents Filed"
+  - number: "6"
+    suffix: "+"
+    label: "Years Research"

@@ -1,0 +1,55 @@
+- category: "MATLAB — 6+ Years"
+  tags:
+    - "Data Analysis"
+    - "Noise Removal"
+    - "Modelling"
+    - "Programmatic GUIs"
+    - "Antenna & RF Toolbox"
+    - "Signal Processing"
+    - "Simulink"
+    - "Math & Stats Toolbox"
+    - "Image Processing"
+
+- category: "Programming Languages"
+  tags:
+    - "Python — Proficient"
+    - "Embedded C — Intermediate"
+    - "C — Beginner"
+    - "C++ — Beginner"
+
+- category: "Antenna & RF Simulation"
+  tags:
+    - "CST Microwave Studio"
+    - "Ansys HFSS"
+    - "4NEC2"
+    - "Cadence AWR"
+    - "Keysight ADS"
+
+- category: "Microcontrollers & SoCs"
+  tags:
+    - "PIC 8/16-bit"
+    - "ATmega 8–32-bit"
+    - "Raspberry Pi"
+    - "Jetson Nano"
+    - "Jetson Orin Nano"
+    - "Jetson AGX Orin"
+    - "Tinker Board"
+
+- category: "Data Formats"
+  tags:
+    - "NetCDF"
+    - "CDF"
+    - "HDF5"
+    - "Pickle (.pkl)"
+    - "RINEX"
+    - "ASCII"
+    - "FITS"
+    - "Binary"
+
+- category: "Platforms & OS"
+  tags:
+    - "Linux"
+    - "Windows"
+    - "macOS"
+    - "SDRs"
+    - "UAV Systems"

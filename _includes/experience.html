@@ -1,0 +1,38 @@
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="sec-label reveal">Career</p>
+  <h2 class="sec-title reveal">Experience &<br>Education.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="exp-grid">
+    <div>
+      <h3 class="tl-heading reveal">Work Experience</h3>
+      <div class="timeline">
+        {% for item in site.data.experience.work %}
+        <div class="tl-item reveal">
+          <div class="tl-date">{{ item.date }}</div>
+          <div class="tl-role">{{ item.role }}</div>
+          <div class="tl-org">{{ item.org }}</div>
+          {% for line in item.desc %}
+          <div class="tl-desc">{{ line }}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3 class="tl-heading reveal">Education</h3>
+      <div class="timeline">
+        {% for item in site.data.experience.education %}
+        <div class="tl-item reveal">
+          <div class="tl-date">{{ item.date }}</div>
+          <div class="tl-role">{{ item.role }}</div>
+          <div class="tl-org">{{ item.org }}</div>
+          {% for line in item.desc %}
+          <div class="tl-desc">{{ line }}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
