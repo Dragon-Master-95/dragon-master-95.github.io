@@ -33,15 +33,23 @@ journals:
     link: "https://ieeexplore.ieee.org/abstract/document/9298456"
 
 conferences:
+  - year: 2026
+    title: "RAISE: A Low-Frequency Space-Based Payload for Solar Radio and RFI Measurements on the SMiLE Mission"
+    authors: "Sangeetha A, H. A. Tanti, A. Datta, A. Kumari, R. Bodade"
+    journal: "IEEE Space · Bengaluru, 2026"
+    link: "https://arxiv.org/abs/2607.25755"
+    
   - year: 2025
     title: "A Low-Cost Radiometric Monitoring of Ionospheric and Auroral Variability in the Arctic"
     authors: "B. Brawar, H.A. Tanti, A. Biswas, A. Shudhanshu, A. Datta, and S. Das"
-    journal: "MAPCON 2025 · Accepted"
+    journal: "IEEE Microwaves, Antennas, and Propagation Conference (MAPCON) · Kochin, 2025"
+    link: "https://ieeexplore.ieee.org/document/11426456"
 
   - year: 2025
     title: "A Study of (U,V) Coverage in Space Based VLBI Using Hybrid Satellite Orbits"
     authors: "T. Biswas, H.A. Tanti, A. Datta and S.K. Pal"
-    journal: "MAPCON 2025 · Accepted"
+    journal: "IEEE Microwaves, Antennas, and Propagation Conference (MAPCON) · Kochin, 2025"
+    link: "https://ieeexplore.ieee.org/document/11426513"
 
   - year: 2024
     title: "An Overview of Arctic RFI Monitoring Survey"
