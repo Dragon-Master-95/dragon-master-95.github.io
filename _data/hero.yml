@@ -27,7 +27,7 @@ stats:
     suffix: "+"
     label: "Conf. Papers"
   - number: "3"
-    suffix: ""
+    suffix: "+"
     label: "Patents Filed"
   - number: "6"
     suffix: "+"
