@@ -57,9 +57,7 @@
   // ── Obfuscated emails ──────────────────────────────────
   document.querySelectorAll('.contact-email-row').forEach(row => {
     const email = row.dataset.user + '@' + row.dataset.domain;
-    const link = row.querySelector('.contact-email');
     const btn = row.querySelector('.copy-btn');
-    link.href = 'mailto:' + email;
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(email).then(() => {
         const original = btn.textContent;
