@@ -1,6 +1,8 @@
   const canvas = document.getElementById('stars-canvas');
   const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let stars = [];
+  let comets = [];
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -14,8 +16,35 @@
       speed: Math.random() * .3 + .05
     }));
   }
+  function spawnComet() {
+    const fromLeft = Math.random() > .5;
+    comets.push({
+      x: fromLeft ? -60 : canvas.width + 60,
+      y: Math.random() * canvas.height * .65,
+      vx: (fromLeft ? 1 : -1) * (7 + Math.random() * 6),
+      vy: 2.5 + Math.random() * 2.5,
+      len: 90 + Math.random() * 70,
+      life: 1
+    });
+  }
+  function scheduleComet() {
+    setTimeout(() => { spawnComet(); scheduleComet(); }, 2000 + Math.random() * 3000);
+  }
   function drawStars() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    if (!reduceMotion) {
+      // slow celestial rotation around the viewport center
+      const angle = 0.00007;
+      const cx = canvas.width / 2, cy = canvas.height / 2;
+      const cos = Math.cos(angle), sin = Math.sin(angle);
+      stars.forEach(s => {
+        const dx = s.x - cx, dy = s.y - cy;
+        s.x = cx + dx * cos - dy * sin;
+        s.y = cy + dx * sin + dy * cos;
+      });
+    }
+
     stars.forEach(s => {
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
@@ -24,10 +53,36 @@
       s.o += s.speed * .01 * (Math.random()>.5?1:-1);
       s.o = Math.max(.05, Math.min(.8, s.o));
     });
+
+    if (!reduceMotion) {
+      comets.forEach(c => {
+        const angle = Math.atan2(c.vy, c.vx);
+        const tailX = c.x - Math.cos(angle) * c.len;
+        const tailY = c.y - Math.sin(angle) * c.len;
+        const grad = ctx.createLinearGradient(c.x, c.y, tailX, tailY);
+        grad.addColorStop(0, `rgba(255,255,255,${c.life})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(c.x, c.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 1.6, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${c.life})`;
+        ctx.fill();
+
+        c.x += c.vx; c.y += c.vy; c.life -= .006;
+      });
+      comets = comets.filter(c => c.life > 0 && c.x > -120 && c.x < canvas.width + 120 && c.y < canvas.height + 120);
+    }
+
     requestAnimationFrame(drawStars);
   }
   resize(); initStars(); drawStars();
   window.addEventListener('resize', () => { resize(); initStars(); });
+  if (!reduceMotion) scheduleComet();
 
   // ── Cursor ───────────────────────────────────────────
   const cur = document.getElementById('cursor');
