@@ -8,7 +8,7 @@
     <div class="contact-emails reveal">
       {% for email in site.data.contact.emails %}
       <div class="contact-email-row" data-user="{{ email.user }}" data-domain="{{ email.domain }}">
-        <!-- <a href="#" class="contact-email">{{ email.display }}</a> -->
+        <a href="#" class="contact-email">{{ email.display }}</a>
         <button type="button" class="copy-btn">Copy</button>
       </div>
       {% endfor %}
