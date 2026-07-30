@@ -1,13 +1,18 @@
 tagline: "Let's build<br><em>something remarkable.</em>"
 description: "Whether you share a passion for antennas, RF systems, radio astronomy, or system development — or you're looking to collaborate on research — I'd love to hear from you."
 
+# `user`/`domain` are kept apart (not a full address) so the real email never appears
+# as one string in the page source — JavaScript joins them at runtime.
 emails:
   - display: "harshaavinashtanti[at]gmail[dot]com"
-    href: "mailto:harshaavinashtanti@gmail.com"
+    user: "harshaavinashtanti"
+    domain: "gmail.com"
   - display: "harshat[at]prl[dot]res[dot]in"
-    href: "mailto:harshat@prl.res.in"
+    user: "harshat"
+    domain: "prl.res.in"
   - display: "tantiharsha[at]iiti[dot]ac[dot]in"
-    href: "mailto:tantiharsha@iiti.ac.in"
+    user: "tantiharsha"
+    domain: "iiti.ac.in"
 
 socials:
   - label: "LinkedIn"

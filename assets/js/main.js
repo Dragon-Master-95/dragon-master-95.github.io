@@ -54,6 +54,22 @@
     btn.classList.add('active');
   }
 
+  // ── Obfuscated emails ──────────────────────────────────
+  document.querySelectorAll('.contact-email-row').forEach(row => {
+    const email = row.dataset.user + '@' + row.dataset.domain;
+    const link = row.querySelector('.contact-email');
+    const btn = row.querySelector('.copy-btn');
+    link.href = 'mailto:' + email;
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(email).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+      });
+    });
+  });
+
   // ── Scroll reveal ─────────────────────────────────────
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
