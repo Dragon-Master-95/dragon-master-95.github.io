@@ -26,7 +26,7 @@ Most people imagine radio telescopes as giant dishes spread across deserts or mo
 
 ---
 
-[Low Frequency Radio Astronomy Hero]({{ '/assets/images/blog/low-frequency-radio-astronomy/hero.png' | relative_url }})
+![Low Frequency Radio Astronomy Hero]({{ '/assets/images/blog/low-frequency-radio-astronomy/hero.png' | relative_url }})
 
 *Figure 1. Hero image illustrating Earth, the ionosphere, and a space-based radio telescope.*
 
