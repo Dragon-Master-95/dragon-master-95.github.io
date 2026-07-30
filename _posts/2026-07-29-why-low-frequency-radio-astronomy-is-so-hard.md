@@ -13,7 +13,7 @@ tags:
   - Solar Physics
   - Radio Frequency Interference
 excerpt: "The ionosphere is both a window and a wall. Understanding why frequencies below 100 MHz are scientifically rich yet technically challenging."
-status: "Coming Soon"
+status: "Live"
 read_time: "5 min read"
 featured_image: "/assets/images/blog/low-frequency-radio-astronomy/hero.jpg"
 image_caption: "Concept illustration of low-frequency radio astronomy."
