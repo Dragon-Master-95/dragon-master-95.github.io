@@ -26,9 +26,9 @@ Most people imagine radio telescopes as giant dishes spread across deserts or mo
 
 ---
 
-![Low Frequency Radio Astronomy Hero]({{ '/assets/images/blog/low-frequency-radio-astronomy/hero.png' | relative_url }})
+[Low Frequency Radio Astronomy Hero]({{ '/assets/images/blog/low-frequency-radio-astronomy/hero.png' | relative_url }})
 
-*Figure 1. **Placeholder:** Hero image illustrating Earth, the ionosphere, and a space-based radio telescope.*
+*Figure 1. Hero image illustrating Earth, the ionosphere, and a space-based radio telescope.*
 
 ---
 
@@ -47,7 +47,7 @@ This means that an entire portion of the radio spectrum remains largely inaccess
 
 ![Ionosphere Diagram]({{ '/assets/images/blog/low-frequency-radio-astronomy/ionosphere-blocking-radio-waves.jpg' | relative_url }})
 
-*Figure 2. **Placeholder:** Illustration showing low-frequency radio waves being reflected by the ionosphere.*
+*Figure 2. Illustration showing low-frequency radio waves being reflected by the ionosphere.*
 
 ---
 
@@ -67,7 +67,7 @@ These emissions allow astronomers to investigate particle acceleration, magnetic
 
 ![Solar Radio Burst Frequencies]({{ '/assets/images/blog/low-frequency-radio-astronomy/solar-burst-frequency-table.png' | relative_url }})
 
-*Figure 3. **Placeholder:** Table or illustration showing the frequency ranges of Type II, Type III, and Type IV solar radio bursts.*
+*Figure 3. Table or illustration showing the frequency ranges of Type II, Type III, and Type IV solar radio bursts.*
 
 ---
 
@@ -78,7 +78,7 @@ Even when the atmosphere allows observations, another challenge remains.
 
 ![RFI Illustration]({{ '/assets/images/blog/low-frequency-radio-astronomy/rfi-illustration-2.jpg' | relative_url }})
 
-*Figure 4 (a). **Placeholder:** An acutal Illustration showing strong terrestrial radio interference.*
+*Figure 4 (a). An acutal Illustration showing strong terrestrial radio interference.*
 
 ---
 
@@ -96,7 +96,7 @@ These human-generated signals are often far stronger than the faint cosmic radio
 
 ![RFI Illustration]({{ '/assets/images/blog/low-frequency-radio-astronomy/rfi-illustration-1.png' | relative_url }})
 
-*Figure 4 (b). **Placeholder:** Illustration comparing weak astronomical signals with strong terrestrial radio interference.*
+*Figure 4 (b). Illustration comparing weak astronomical signals with strong terrestrial radio interference.*
 
 ---
 
@@ -117,7 +117,7 @@ Several modern mission concepts are exploring compact radio payloads capable of 
 
 ![RAISE Payload]({{ '/assets/images/blog/low-frequency-radio-astronomy/raise-payload-block-diagram.png' | relative_url }})
 
-*Figure 5. **Placeholder:** Functional block diagram of a compact space-based low-frequency radio payload.*
+*Figure 5. Functional block diagram of a compact space-based low-frequency radio payload.*
 
 ---
 
@@ -138,7 +138,7 @@ These next-generation observatories promise unprecedented angular resolution whi
 
 ![Future Space Radio Observatory]({{ '/assets/images/blog/low-frequency-radio-astronomy/future-space-radio-observatory.jpg' | relative_url }})
 
-*Figure 6. **Placeholder:** Artist's concept of multiple space-based radio telescopes working together.*
+*Figure 6. Artist's concept of multiple space-based radio telescopes working together.*
 
 ---
 
