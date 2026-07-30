@@ -3,6 +3,7 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let stars = [];
   let comets = [];
+  let galaxies = [];
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -15,6 +16,47 @@
       o: Math.random() * .6 + .1,
       speed: Math.random() * .3 + .05
     }));
+  }
+  function initGalaxies() {
+    const palette = ['74,158,255', '61,217,192', '232,184,109'];
+    galaxies = Array.from({length:3}, (_, i) => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 200 + Math.random() * 180,
+      color: palette[i % palette.length],
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() > .5 ? 1 : -1) * (.0002 + Math.random() * .0003),
+      vx: (Math.random() - .5) * .05,
+      vy: (Math.random() - .5) * .04
+    }));
+  }
+  function drawGalaxy(g) {
+    ctx.save();
+    ctx.translate(g.x, g.y);
+    ctx.rotate(g.angle);
+    const grad = ctx.createRadialGradient(0,0,0, 0,0,g.r);
+    grad.addColorStop(0, `rgba(${g.color},.14)`);
+    grad.addColorStop(.4, `rgba(${g.color},.06)`);
+    grad.addColorStop(1, `rgba(${g.color},0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, g.r, g.r * .55, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.strokeStyle = `rgba(${g.color},.09)`;
+    ctx.lineWidth = g.r * .04;
+    for (let arm = 0; arm < 2; arm++) {
+      ctx.beginPath();
+      const armOffset = arm * Math.PI;
+      for (let t = 0; t <= 1; t += .04) {
+        const rad = t * g.r * .85;
+        const th = t * Math.PI * 2.2 + armOffset;
+        const px = Math.cos(th) * rad, py = Math.sin(th) * rad * .55;
+        if (t === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
   }
   function spawnComet() {
     const fromLeft = Math.random() > .5;
@@ -32,6 +74,18 @@
   }
   function drawStars() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    if (!reduceMotion) {
+      galaxies.forEach(g => {
+        g.angle += g.spin;
+        g.x += g.vx; g.y += g.vy;
+        if (g.x < -g.r) g.x = canvas.width + g.r;
+        if (g.x > canvas.width + g.r) g.x = -g.r;
+        if (g.y < -g.r) g.y = canvas.height + g.r;
+        if (g.y > canvas.height + g.r) g.y = -g.r;
+      });
+    }
+    galaxies.forEach(drawGalaxy);
 
     if (!reduceMotion) {
       // slow celestial rotation around the viewport center
@@ -80,8 +134,8 @@
 
     requestAnimationFrame(drawStars);
   }
-  resize(); initStars(); drawStars();
-  window.addEventListener('resize', () => { resize(); initStars(); });
+  resize(); initStars(); initGalaxies(); drawStars();
+  window.addEventListener('resize', () => { resize(); initStars(); initGalaxies(); });
   if (!reduceMotion) scheduleComet();
 
   // ── Cursor ───────────────────────────────────────────
