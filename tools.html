@@ -1,0 +1,64 @@
+---
+layout: default
+title: "Tools — Harsha Avinash Tanti, PhD"
+permalink: /tools/
+---
+<!-- TOOLS PAGE -->
+<section id="tools-intro" class="tools-hero">
+  <p class="sec-label reveal in">Tools</p>
+  <h1 class="sec-title reveal in">Tools &amp;<br>Open Source.</h1>
+  <div class="sec-rule reveal in"></div>
+  <div class="tools-intro reveal in">
+    <p>
+      A collection of small web-based tools and open-source code that grew out of my day-to-day work in
+      radio astronomy, RF instrumentation and space weather. Some run right here in the browser; others
+      live on GitHub as scripts and software you can clone, adapt and build on.
+    </p>
+    <p>
+      Everything here is shared freely in the hope that it saves someone else a few hours at the bench
+      or at the telescope. Issues, suggestions and pull requests are always welcome.
+    </p>
+    <p class="tools-credit">
+      Developed with the assistance of <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
+      (Anthropic), which helped make these tools more user-friendly.
+    </p>
+  </div>
+</section>
+
+<section id="web-tools">
+  <p class="sec-label reveal">In the Browser</p>
+  <h2 class="sec-title reveal">Web Tools.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="blog-grid">
+    {% for tool in site.data.tools.web_tools %}
+    {% if tool.url %}<a class="blog-card-link" href="{{ tool.url | relative_url }}">{% endif %}
+    <div class="blog-card reveal{% if forloop.index0 > 0 and forloop.index0 < 4 %} reveal-delay-{{ forloop.index0 }}{% endif %}">
+      <div class="blog-tag">{{ tool.tag }}</div>
+      <div class="blog-title">{{ tool.name }}</div>
+      <div class="blog-excerpt">{{ tool.description }}</div>
+      <div class="blog-meta"><span class="blog-status{% if tool.status == "Live" %} blog-status-live{% elsif tool.status == "Coming Soon" %} blog-status-soon{% endif %}">{{ tool.status }}</span><span>Open →</span></div>
+    </div>
+    {% if tool.url %}</a>{% endif %}
+    {% else %}
+    <div class="blog-card blog-coming reveal"><span>Web tools coming soon</span></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="repos">
+  <p class="sec-label reveal">On GitHub</p>
+  <h2 class="sec-title reveal">Public<br>Repositories.</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="blog-grid">
+    {% for repo in site.data.tools.repos %}
+    <a class="blog-card-link" href="{{ repo.url }}" target="_blank" rel="noopener">
+    <div class="blog-card reveal{% assign d = forloop.index0 | modulo: 3 %}{% if d > 0 %} reveal-delay-{{ d }}{% endif %}">
+      <div class="blog-tag">{{ repo.tag }}</div>
+      <div class="blog-title repo-name">{{ repo.name }}</div>
+      <div class="blog-excerpt">{{ repo.description }}</div>
+      <div class="blog-meta"><span>{{ repo.language }}</span><span class="repo-link">GitHub ↗</span></div>
+    </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>

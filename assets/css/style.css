@@ -237,6 +237,20 @@
 
     .post-tag-row { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); }
 
+    /* ── TOOLS PAGE ─────────────────────────── */
+    .tools-hero { padding-top:10rem; }
+    .tools-intro { max-width:820px; }
+    .tools-intro p { font-size:1rem; color:rgba(200,212,232,.8); line-height:1.9; margin-bottom:1.4rem; }
+    .tools-credit { font-family:var(--font-mono); font-size:.72rem !important; letter-spacing:.04em; color:var(--muted) !important; border-left:2px solid var(--teal); padding-left:1rem; margin-top:2rem; }
+    .tools-credit a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(61,217,192,.3); }
+    .tools-credit a:hover { color:var(--gold); }
+    #web-tools, #repos { border-top:1px solid var(--line); }
+    #repos { background:var(--bg2); }
+    #repos .blog-card { background:var(--bg2); }
+    #repos .blog-card:hover { background:var(--bg3); }
+    .repo-name { font-family:var(--font-mono); font-weight:500; font-size:.92rem; word-break:break-word; }
+    .blog-card-link:hover .repo-link { color:var(--gold); }
+
     /* ── CONTACT ────────────────────────────── */
     #contact { border-top:1px solid var(--line); background:var(--bg2); text-align:center; }
     .contact-bg-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:900; font-size:clamp(6rem,18vw,18rem); color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.03); pointer-events:none; line-height:1; user-select:none; overflow:hidden; }
@@ -271,6 +285,7 @@
       .nav-links { display:none; }
       section { padding:5rem 2rem; }
       #hero { padding:8rem 2rem 4rem; }
+      .tools-hero { padding-top:8rem; }
       .post { padding:8rem 1.5rem 4rem; }
       .about-grid, .exp-grid { grid-template-columns:1fr; gap:3rem; }
       .skills-outer, .research-grid, .blog-grid { grid-template-columns:1fr; }

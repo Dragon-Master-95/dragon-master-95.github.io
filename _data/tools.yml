@@ -1,0 +1,46 @@
+# Content for the /tools/ page.
+#
+# web_tools: browser-based tools hosted on this site (or elsewhere).
+#   Fields: name, tag, description, url, status ("Live" | "Coming Soon")
+#   If this list is empty, a "coming soon" placeholder card is shown.
+#
+# repos: public GitHub repositories to showcase. Add, remove or reorder freely.
+#   Fields: name, tag, description, url, language
+
+web_tools: []
+#  - name: "Example Tool"
+#    tag: "RF"
+#    description: "One-line description of what the tool does."
+#    url: "/tools/example-tool/"
+#    status: "Live"
+
+repos:
+  - name: "rf-instrument-scripts"
+    tag: "RF Instrumentation"
+    description: "Python scripts for remote control and data acquisition from RF test instruments (spectrum analyzers, signal generators, SDRs) via PyVISA/SCPI, with HDF5 logging and viewers."
+    url: "https://github.com/Dragon-Master-95/rf-instrument-scripts"
+    language: "Python"
+
+  - name: "Project_H1_line_detection"
+    tag: "Radio Astronomy"
+    description: "Hardware and software for a backyard detection of the 21 cm neutral hydrogen (H1) line."
+    url: "https://github.com/Dragon-Master-95/Project_H1_line_detection"
+    language: "Python"
+
+  - name: "CASPER_Aquisition_Software"
+    tag: "Digital Backend"
+    description: "Data acquisition software for CASPER-based FPGA digital receivers."
+    url: "https://github.com/Dragon-Master-95/CASPER_Aquisition_Software"
+    language: "Python"
+
+  - name: "RF_Measurement_Instrument_data_reader_n_analyser"
+    tag: "RF Instrumentation"
+    description: "Reader and analyser for data files saved by RF measurement instruments."
+    url: "https://github.com/Dragon-Master-95/RF_Measurement_Instrument_data_reader_n_analyser"
+    language: "Python"
+
+  - name: "Rinex_data_extractor"
+    tag: "GNSS"
+    description: "Extracts observables from RINEX files — pseudoranges, SNR/signal strength, Doppler and more."
+    url: "https://github.com/Dragon-Master-95/Rinex_data_extractor"
+    language: "Python"
